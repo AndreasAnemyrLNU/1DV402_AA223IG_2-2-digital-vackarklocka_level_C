@@ -9,7 +9,7 @@ namespace _1DV402.S2.L2C
     class NumberDisplay
     {
         //Fält start--------------------------------------
-        private int _maxNumber = 200;
+        private int _maxNumber;
         private int _number;
         //Fält slut---------------------------------------
 
@@ -45,16 +45,55 @@ namespace _1DV402.S2.L2C
         }
         //Egenskaper slut+++++++++++++++++++++++++++++++++
 
-        //Konstruktorer start-----------------------------
-        public NumberDisplay(int maxnumber)
-            :this(maxnumber, number)
-        { }
 
-        public NumberDisplay(int maxnumber, int number) { }
+        public NumberDisplay(int maxNumber)
+            :this(maxNumber, 0)
+        {
+        }
+        public NumberDisplay(int maxNumber, int number)
+        {
+            MaxNumber = maxNumber;
+            Number = number;
+        }
 
 
-        //Konstruktorer slut------------------------------
 
+        //?????????????????????????????
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public void Increment()
+        {
+            if (!(Number == MaxNumber))
+            {
+                Number++;
+            }
+            else
+            {
+                Number = 0;
+            }
+        }
+
+        public override string ToString()
+        {
+            //Lägg till 0:a i sträng om Number är mindre än 10
+            if (Number < 10)
+            {
+                return string.Format("0{0}", Number.ToString());
+            }
+            else
+            {
+                return Number.ToString();
+            }
+
+        }
 
     }
 }
