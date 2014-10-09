@@ -83,17 +83,34 @@ namespace _1DV402.S2.L2C
 
         public override string ToString()
         {
-            //Lägg till 0:a i sträng om Number är mindre än 10
-            if (Number < 10)
+            return Number.ToString();
+        }
+
+        public string ToString(string format)
+        {
+            //Lägg till inledande 0:a i sträng om Number är mindre än 10 och om formatsträngen är lika med "00
+            if ("00" == format)
             {
-                return string.Format("0{0}", Number.ToString());
+                if (Number < 10)
+                {
+                    return string.Format("0{0}", Number.ToString());
+                }
+                else
+                {
+                    return Number.ToString();
+                }
+
             }
-            else
+            //Åsidossätt inledande nolla om formatsträng är "0" eller "G"
+            else if (("0" == format) || ("G" == format))
             {
                 return Number.ToString();
             }
+            else throw new FormatException();
 
         }
+
+
 
     }
 }
