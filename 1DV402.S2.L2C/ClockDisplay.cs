@@ -52,8 +52,8 @@ namespace _1DV402.S2.L2C
             public ClockDisplay(int hour, int minute)
             {
                 //Vilket fält är det som ska tilldelas och hur?
-                _hourDisplay = hour;
-                _minuteDisplay = minute;
+                _hourDisplay.Number = hour;
+                _minuteDisplay.Number = minute;
             }
 
             public ClockDisplay(string time)
