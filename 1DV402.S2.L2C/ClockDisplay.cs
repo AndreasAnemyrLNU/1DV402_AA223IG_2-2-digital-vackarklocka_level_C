@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace _1DV402.S2.L2C
 {
@@ -26,16 +27,15 @@ namespace _1DV402.S2.L2C
 
             set
             {
-                //Hur fungerar reguljärt uttryck. Kolla!
-                if (value == "^(([0-1]?[0-9])|([2][0-3])):([0-5][0-9])$")
+                //Kontroll av indata genom reguljärt uttryck
+                //Indata kommer SKA komma i form av HH:mm
+                Regex rgx = new Regex("^(([0-1]?[0-9])|([2][0-3])):([0-5][0-9])$");
+
+                if ( rgx.IsMatch(value))
                 {
-                    _hourDisplay = new NumberDisplay(23);
-                    _minuteDisplay = new NumberDisplay(59);
-
                     string[] values = value.Split(':');
-                    _hourDisplay.Number =  int.Parse(values[0]);
+                    _hourDisplay.Number = int.Parse(values[0]);
                     _minuteDisplay.Number = int.Parse(values[1]);
-
                 }
                 else
                 {
@@ -51,14 +51,13 @@ namespace _1DV402.S2.L2C
             }
             public ClockDisplay(int hour, int minute)
             {
-                //Vilket fält är det som ska tilldelas och hur?
-                _hourDisplay.Number = hour;
-                _minuteDisplay.Number = minute;
+                _hourDisplay = new NumberDisplay(23);
+                _minuteDisplay = new NumberDisplay(59);
             }
 
             public ClockDisplay(string time)
             {
-                Time = time;
+                //Tom
             }
 
             public override bool Equals(object obj)

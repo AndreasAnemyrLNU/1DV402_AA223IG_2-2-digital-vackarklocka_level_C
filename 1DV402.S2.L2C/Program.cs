@@ -12,27 +12,9 @@ namespace _1DV402.S2.L2C
         {
 
 
-           NumberDisplay testNumberDisplayObj = new NumberDisplay(20,6);
+            AlarmClock alarmClock = new AlarmClock(24,0,24,0);
 
-           Console.WriteLine(testNumberDisplayObj.ToString("G"));
-           testNumberDisplayObj.Increment();
-           Console.WriteLine(testNumberDisplayObj);
-           testNumberDisplayObj.Increment();
-           Console.WriteLine(testNumberDisplayObj);
-           testNumberDisplayObj.Increment();
-           Console.WriteLine(testNumberDisplayObj);
-           testNumberDisplayObj.Increment();
-           Console.WriteLine(testNumberDisplayObj);
-           testNumberDisplayObj.Increment();
-           Console.WriteLine(testNumberDisplayObj);
-           testNumberDisplayObj.Increment();
-           Console.WriteLine(testNumberDisplayObj);
-           testNumberDisplayObj.Increment();
-           Console.WriteLine(testNumberDisplayObj);
-           testNumberDisplayObj.Increment();
-           Console.WriteLine(testNumberDisplayObj.ToString("00"));
-
-           Console.ReadKey();
+        Console.ReadKey();
 
         }
     }
