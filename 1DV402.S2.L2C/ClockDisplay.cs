@@ -24,7 +24,6 @@ namespace _1DV402.S2.L2C
             { 
                 return string.Format("{0}:{1}", _hourDisplay, _minuteDisplay);  
             }
-
             set
             {
                 //Kontroll av indata genom reguljärt uttryck
@@ -94,10 +93,9 @@ namespace _1DV402.S2.L2C
                 }
             }
 
-        
-
-
-
-
+            public override string ToString()
+            {
+                return string.Format("{0}:{1}",_hourDisplay.ToString("0"),_minuteDisplay.ToString("00"));
+            }
     }
 }

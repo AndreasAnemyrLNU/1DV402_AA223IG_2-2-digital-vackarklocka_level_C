@@ -12,7 +12,10 @@ namespace _1DV402.S2.L2C
         {
 
 
-            AlarmClock alarmClock = new AlarmClock(24,0,24,0);
+            AlarmClock alarmClock = new AlarmClock(12,30,19,17);
+
+            Console.WriteLine(alarmClock.ToString());
+
 
         Console.ReadKey();
 
