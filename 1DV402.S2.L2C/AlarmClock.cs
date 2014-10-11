@@ -48,12 +48,23 @@ namespace _1DV402.S2.L2C
         }
         public AlarmClock(string time, params string[] alarmTimes)
         {
+            _time = new ClockDisplay();
+                _time.Time = time;
+
+            _alarmTimes = new ClockDisplay[1] { new ClockDisplay() };
+                _alarmTimes[0].Time = alarmTimes[0];
 
         }
 
         public override string ToString()
         {
-            return string.Format("{0} ({1})",_time.ToString(), _alarmTimes[0].ToString());
+            string str = "";
+            foreach(ClockDisplay _alarmTime in _alarmTimes){
+                str += _alarmTime.ToString();
+
+            }
+            return string.Format("{0} ({1})",_time.ToString(), str);
+
         }
 
     }
