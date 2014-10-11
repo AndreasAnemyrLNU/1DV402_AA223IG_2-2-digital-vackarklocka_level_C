@@ -44,7 +44,7 @@ namespace _1DV402.S2.L2C
         }
 
             public ClockDisplay()
-                :this(0,00)
+                :this(0,0)
             {
             //Tom
             }
