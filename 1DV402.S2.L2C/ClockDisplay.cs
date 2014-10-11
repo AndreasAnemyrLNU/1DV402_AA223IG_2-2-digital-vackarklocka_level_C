@@ -30,7 +30,9 @@ namespace _1DV402.S2.L2C
                 //Indata kommer SKA komma i form av HH:mm
                 Regex rgx = new Regex("^(([0-1]?[0-9])|([2][0-3])):([0-5][0-9])$");
 
-                if ( rgx.IsMatch(value))
+             //   value = "0:00";
+
+                if (rgx.IsMatch(value))
                 {
                     string[] values = value.Split(':');
                     _hourDisplay.Number = int.Parse(values[0]);
@@ -38,7 +40,7 @@ namespace _1DV402.S2.L2C
                 }
                 else
                 {
-                    throw new FormatException();
+                    throw new FormatException(string.Format("Strängen {0} kan inte tolkas som en tid på formatet HH:mm.",value));
                 }
             }
         }

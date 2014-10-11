@@ -10,6 +10,7 @@ namespace _1DV402.S2.L2C
     {
         static void Main(string[] args)
         {
+         //
             TestPackage();
 
             Console.ReadKey();
@@ -78,9 +79,6 @@ namespace _1DV402.S2.L2C
             Console.WriteLine("Ställer befintligt AlarmClock-objekt till 23:58 och låter den gå 13 minuter.");
             Console.WriteLine();
             Run(new AlarmClock("23:58","7:10","7:15","7:30"),13);
-
-            
-
         }
 
         private static void Test6()
@@ -91,9 +89,6 @@ namespace _1DV402.S2.L2C
             Console.WriteLine("Ställer befintligt AlarmClock-objekt till 6:12 och alarmtiden till 6:15 och låter den gå 6 minuter.");
             Console.WriteLine();
             Run(new AlarmClock("6:12", "6:15"), 6);
-
-
-
         }
 
         private static void Test7()
@@ -112,7 +107,7 @@ namespace _1DV402.S2.L2C
             Console.WriteLine("Test 8.");
             Console.WriteLine("Testar konstruktorer så att undantag kastas då tid och alarmtid tilldelas felaktiga värden.");
             Console.WriteLine();
-            Run(new AlarmClock("24:89", "7:69"));
+            Run(new AlarmClock(32,03,27,00));
         }
 
         private static void TestPackage()
@@ -169,17 +164,17 @@ namespace _1DV402.S2.L2C
             {
                 Test7();
             }
-            catch
+            catch (Exception e)
             {
-                Console.WriteLine("Nåt gick fel med test 7");
+                Console.WriteLine(e.Message);
             }
             try
             {
                 Test8();
             }
-            catch
+            catch (Exception e)
             {
-                Console.WriteLine("Nåt gick fel med test 8");
+                Console.WriteLine(e.Message);
             }
         }
         private static void HorizontalLine() 

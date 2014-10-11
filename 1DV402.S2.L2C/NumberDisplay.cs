@@ -22,7 +22,7 @@ namespace _1DV402.S2.L2C
             set 
             { 
                 //Valierar ett inkommannde value större än 0
-                if (value < 0)
+                if(!(0 < value))
                 {
                     throw new ArgumentException();
                 }
@@ -47,9 +47,7 @@ namespace _1DV402.S2.L2C
 
 
         public NumberDisplay(int maxNumber)
-            :this(maxNumber, 0)
-        {
-        }
+            :this(maxNumber, 0) { }
         public NumberDisplay(int maxNumber, int number)
         {
             MaxNumber = maxNumber;

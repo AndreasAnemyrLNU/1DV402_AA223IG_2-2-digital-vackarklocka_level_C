@@ -25,10 +25,30 @@ namespace _1DV402.S2.L2C
                 }
                 return alarmTimesToStringArr;
             }
-            //set{}; 
+            set
+            {
+                    //Kopierar inkommande array values värde till array alarmTimes för förbättrad läsbarhet
+                    string[] alarmTimes = value;
+                    //Loopar genom arry och skapar ClockDisplay objekt för varje sträng
+                    for(int i = 0; i < alarmTimes.Length;i++)
+                    {
+                        _alarmTimes[i] = new ClockDisplay();
+                        _alarmTimes[i].Time = alarmTimes[i];
+                    }
+            }
         }
        
-        public string Time { get; set; }
+        public string Time 
+        {
+            get
+            {
+                return _time.Time;
+            }
+            set
+            {
+                _time.Time = value;
+            }
+        }
 
         public AlarmClock() 
             :this(0, 0)  {}
@@ -51,14 +71,9 @@ namespace _1DV402.S2.L2C
             _time = new ClockDisplay();
                 _time.Time = time;
           
-                //Skapar rätt antal ClockDisplayobjekt
-                _alarmTimes = new ClockDisplay[alarmTimes.Length];
-                //Loopar genom arrayen alarmTimes  
-                for(int i = 0; i < alarmTimes.Length;i++)
-                    {
-                        _alarmTimes[i] = new ClockDisplay();
-                        _alarmTimes[i].Time = alarmTimes[i];
-                    }
+            //Skapar rätt antal ClockDisplayobjekt
+            _alarmTimes = new ClockDisplay[alarmTimes.Length];
+                AlarmTimes = alarmTimes;
         }
 
         //Nu ger jag mig på en att förstå Equals :)
