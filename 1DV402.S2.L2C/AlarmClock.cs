@@ -59,21 +59,55 @@ namespace _1DV402.S2.L2C
         public 
             AlarmClock(int hour, int minute, int alarmHour, int alarmMinute)
         {
-            _time = new ClockDisplay();
-                _time.Time = string.Format("{0}:{1}", hour, minute);
+            try
+            {
+                _time = new ClockDisplay();
+                    _time.Time = string.Format("{0}:{1,1:D2}", hour, minute);
+            }
+            catch (FormatException e)
+            {
+                Program.ErrorMessage += string.Format("{0}\n", e.Message);
+                _time = null;
+            }
           
-            
-           _alarmTimes = new ClockDisplay[1]{new ClockDisplay()};
-                _alarmTimes[0].Time = string.Format("{0}:{1}", alarmHour, alarmMinute);
+            try
+            {
+                _alarmTimes = new ClockDisplay[1]{new ClockDisplay()};
+                    _alarmTimes[0].Time = string.Format("{0}:{1,1:D2}", alarmHour, alarmMinute);
+            }
+            catch (FormatException e)
+            {
+                Program.ErrorMessage += string.Format("{0}\n", e.Message);
+                _alarmTimes = null;
+            }
         }
         public AlarmClock(string time, params string[] alarmTimes)
         {
-            _time = new ClockDisplay();
-                _time.Time = time;
+            
+            try
+            {
+                _time = new ClockDisplay();
+                    _time.Time = time;
+            }
+            catch (FormatException e)
+            {
+                Program.ErrorMessage += string.Format("{0}\n", e.Message);
+                _time = null;
+            }
           
-            //Skapar rätt antal ClockDisplayobjekt
-            _alarmTimes = new ClockDisplay[alarmTimes.Length];
-                AlarmTimes = alarmTimes;
+                //Skapar rätt antal ClockDisplayobjekt
+            try
+            {
+                _alarmTimes = new ClockDisplay[alarmTimes.Length];
+                    AlarmTimes = alarmTimes;
+            }
+            catch (FormatException e)
+            {
+                Program.ErrorMessage += string.Format("{0}\n", e.Message);
+                _alarmTimes = null;
+            }
+
+            
         }
 
         //Nu ger jag mig på en att förstå Equals :)
@@ -109,10 +143,15 @@ namespace _1DV402.S2.L2C
         public override string ToString()
         {
             string str = "";
-            foreach(ClockDisplay _alarmTime in _alarmTimes){
-                str += _alarmTime.ToString();
+            if (!(_alarmTimes == null))
+            {
+                foreach (ClockDisplay _alarmTime in _alarmTimes)
+                {
+                    str += _alarmTime.ToString();
+                }
+                return string.Format("{0} ({1})", _time.ToString(), str);
             }
-            return string.Format("{0} ({1})",_time.ToString(), str);
+            return "";
 
         }
 

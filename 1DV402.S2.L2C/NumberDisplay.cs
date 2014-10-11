@@ -8,20 +8,15 @@ namespace _1DV402.S2.L2C
 {
     class NumberDisplay
     {
-        //Fält start--------------------------------------
         private int _maxNumber;
         private int _number;
-        //Fält slut---------------------------------------
 
-        //Egenskaper start++++++++++++++++++++++++++++++++
-
-        //Inkaplsar _maxNumber
         public int MaxNumber
         {
             get { return _maxNumber; }
             set 
             { 
-                //Valierar ett inkommannde value större än 0
+                //Validerar ett inkommannde value större än 0
                 if(!(0 < value))
                 {
                     throw new ArgumentException();
@@ -43,8 +38,6 @@ namespace _1DV402.S2.L2C
             _number = value; 
             }
         }
-        //Egenskaper slut+++++++++++++++++++++++++++++++++
-
 
         public NumberDisplay(int maxNumber)
             :this(maxNumber, 0) { }
@@ -54,9 +47,6 @@ namespace _1DV402.S2.L2C
             Number = number;
         }
 
-
-
-        //?????????????????????????????
         public override bool Equals(object obj)
         {
             return base.Equals(obj);

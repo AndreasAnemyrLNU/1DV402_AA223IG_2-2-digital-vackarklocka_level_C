@@ -8,15 +8,13 @@ namespace _1DV402.S2.L2C
 {
     class Program
     {
+
+        public static string ErrorMessage { get; set; }
         static void Main(string[] args)
-        {
-         //
-            TestPackage();
-
+        {       
+           TestPackage();
             Console.ReadKey();
-
         }
-
         private static void Run(AlarmClock ac, int minutes = 0)
         {
             if (0 == minutes)
@@ -32,7 +30,6 @@ namespace _1DV402.S2.L2C
                 }
             }
         }
-
         private static void Test1(){
             HorizontalLine();
             HorizontalLine();
@@ -41,7 +38,6 @@ namespace _1DV402.S2.L2C
             Console.WriteLine();
             Run(new AlarmClock()); 
        }
-
         private static void Test2()
         {
             HorizontalLine();
@@ -51,7 +47,6 @@ namespace _1DV402.S2.L2C
             Console.WriteLine();
             Run(new AlarmClock(9,42));
         }
-
         private static void Test3()
         {
             HorizontalLine();
@@ -61,7 +56,6 @@ namespace _1DV402.S2.L2C
             Console.WriteLine();
             Run(new AlarmClock(13, 24, 7, 35));
         }
-
         private static void Test4()
         {
             HorizontalLine();
@@ -80,7 +74,6 @@ namespace _1DV402.S2.L2C
             Console.WriteLine();
             Run(new AlarmClock("23:58","7:10","7:15","7:30"),13);
         }
-
         private static void Test6()
         {
             HorizontalLine();
@@ -90,7 +83,6 @@ namespace _1DV402.S2.L2C
             Console.WriteLine();
             Run(new AlarmClock("6:12", "6:15"), 6);
         }
-
         private static void Test7()
         {
             HorizontalLine();
@@ -109,16 +101,15 @@ namespace _1DV402.S2.L2C
             Console.WriteLine();
             Run(new AlarmClock(32,03,27,00));
         }
-
         private static void TestPackage()
         {
-            try
+            try 
             {
-                Test1();
+            Test1();
             }
             catch
             {
-                Console.WriteLine("Nåt gick fel med test 1");
+                Console.WriteLine("Första testet genomfördes inte!");
             }
             try
             {
@@ -126,7 +117,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("Nåt gick fel med test 2");
+                Console.WriteLine("Andra testet genomfördes inte!");
             }
             try
             {
@@ -134,7 +125,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("Nåt gick fel med test 3");
+                Console.WriteLine("tredje testet genomfördes inte!");
             }
             try
             {
@@ -142,7 +133,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("Nåt gick fel med test 4");
+                Console.WriteLine("Fjärde testet genomfördes inte!");
             }
             try
             {
@@ -150,7 +141,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("Nåt gick fel med test 5");
+                Console.WriteLine("Femte testet genomfördes inte!");
             }
             try
             {
@@ -158,28 +149,38 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("Nåt gick fel med test 6");
+                Console.WriteLine("Sjätte testet genomfördes inte!");
             }
             try
             {
                 Test7();
+                ViewErrorMessage();
             }
-            catch (Exception e)
+            catch
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Sjunde testet genomfördes inte!");
             }
             try
             {
                 Test8();
+                ViewErrorMessage();
             }
-            catch (Exception e)
+            catch
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Åttonde testet genomfördes inte!");
             }
         }
         private static void HorizontalLine() 
         {
             Console.WriteLine("-----------------------------------------------------------------------");
+        }
+        private static void ViewErrorMessage()
+        {
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(ErrorMessage);
+            ErrorMessage = null;
+            Console.ResetColor();
         }
 
 

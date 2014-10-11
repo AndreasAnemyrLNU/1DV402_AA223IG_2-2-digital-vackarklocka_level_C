@@ -30,8 +30,6 @@ namespace _1DV402.S2.L2C
                 //Indata kommer SKA komma i form av HH:mm
                 Regex rgx = new Regex("^(([0-1]?[0-9])|([2][0-3])):([0-5][0-9])$");
 
-             //   value = "0:00";
-
                 if (rgx.IsMatch(value))
                 {
                     string[] values = value.Split(':');
@@ -71,8 +69,6 @@ namespace _1DV402.S2.L2C
                 return base.GetHashCode();
             }
        
-
-            //Börjar nu på nästa då jag försöker få en förståelse för aggregat och sammangahnget i sig...
             public void Increment()
             {
                 //Nollställ minuter om 59
