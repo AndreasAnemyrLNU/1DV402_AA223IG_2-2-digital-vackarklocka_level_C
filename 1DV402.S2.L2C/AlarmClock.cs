@@ -31,8 +31,8 @@ namespace _1DV402.S2.L2C
         public string Time { get; set; }
 
         public AlarmClock() 
-            :this(0,0)  {}
-
+            :this(0, 0)  {}
+         
         public AlarmClock(int hour, int minute)
             :this(hour, minute, 0, 0)   {}
 
@@ -50,9 +50,44 @@ namespace _1DV402.S2.L2C
         {
             _time = new ClockDisplay();
                 _time.Time = time;
+          
+                //Skapar rätt antal ClockDisplayobjekt
+                _alarmTimes = new ClockDisplay[alarmTimes.Length];
+                //Loopar genom arrayen alarmTimes  
+                for(int i = 0; i < alarmTimes.Length;i++)
+                    {
+                        _alarmTimes[i] = new ClockDisplay();
+                        _alarmTimes[i].Time = alarmTimes[i];
+                    }
+        }
 
-            _alarmTimes = new ClockDisplay[1] { new ClockDisplay() };
-                _alarmTimes[0].Time = alarmTimes[0];
+        //Nu ger jag mig på en att förstå Equals :)
+        public override bool Equals(object obj)
+        {
+            if(obj == null)
+            {
+                return false;
+            }
+
+            if(!(obj is ClockDisplay))
+            {
+                return false;
+            }
+
+            return true;
+
+        }
+
+        public override int GetHashCode()
+            {
+ 	            return base.GetHashCode();
+            }
+
+        public bool TickTock()
+        {
+            _time.Increment();
+
+            return true;
 
         }
 
@@ -61,7 +96,6 @@ namespace _1DV402.S2.L2C
             string str = "";
             foreach(ClockDisplay _alarmTime in _alarmTimes){
                 str += _alarmTime.ToString();
-
             }
             return string.Format("{0} ({1})",_time.ToString(), str);
 
