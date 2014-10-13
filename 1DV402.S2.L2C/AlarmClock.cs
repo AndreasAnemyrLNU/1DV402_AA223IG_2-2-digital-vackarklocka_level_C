@@ -131,13 +131,21 @@ namespace _1DV402.S2.L2C
             return ToString().GetHashCode();
         }
         //Overrides operator != for objs of type AlarmClock
-        public static bool operator != (AlarmClock a, AlarmClock b)
+        public static bool operator !=(AlarmClock a, AlarmClock b)
         {
-            return a.Equals(b);
+            return !(a == b);
         }
         //Overrides operator == for objs of type AlarmClock
-        public static bool operator == (AlarmClock a, AlarmClock b)
+        public static bool operator ==(AlarmClock a, AlarmClock b)
         {
+            //Check if a is null
+            //(operator== would be recursive)
+            if (ReferenceEquals(a, null))
+            {
+                //Return true if b is also full
+                //but false otherwise
+                return ReferenceEquals(b, null);
+            }
             return a.Equals(b);
         }
         //Tick one min forward

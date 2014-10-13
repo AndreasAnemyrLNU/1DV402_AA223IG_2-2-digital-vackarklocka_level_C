@@ -61,6 +61,27 @@ namespace _1DV402.S2.L2C.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ╔══════════════════════════════════════╗
+        ///║       Väckarklockan URLED (TM)       ║
+        ///║       Modellnr.: 1DV402S2L2C         ║
+        ///╚══════════════════════════════════════╝.
+        /// </summary>
+        internal static string Display {
+            get {
+                return ResourceManager.GetString("Display", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strängen {0} kan inte tolkas som en tid på formatet HH:mm..
+        /// </summary>
+        internal static string NotValidStringHHmm {
+            get {
+                return ResourceManager.GetString("NotValidStringHHmm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Test 1 \nTest av standardkonstruktorn\n.
         /// </summary>
         internal static string Test1 {
@@ -79,7 +100,7 @@ namespace _1DV402.S2.L2C.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test 3\n\n.
+        ///   Looks up a localized string similar to Test 3\nTest av konstruktorn med fyra parametrar av typen int (13, 24, 7, 35)&quot;\n.
         /// </summary>
         internal static string Test3 {
             get {
@@ -88,7 +109,7 @@ namespace _1DV402.S2.L2C.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test 4\n\n.
+        ///   Looks up a localized string similar to Test 4\nTest av konstruktorn med minst två parametrar av typen string.\n(&quot;7:07&quot;,&quot;7:10&quot;,&quot;7:15&quot;,&quot;7:30&quot;)\n.
         /// </summary>
         internal static string Test4 {
             get {
@@ -97,7 +118,7 @@ namespace _1DV402.S2.L2C.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test 5\n\n.
+        ///   Looks up a localized string similar to Test 5\nStäller befintligt AlarmClock-objekt till 23:58 och låter den gå 13 minuter.\n.
         /// </summary>
         internal static string Test5 {
             get {
@@ -106,7 +127,7 @@ namespace _1DV402.S2.L2C.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test 6 \n\n.
+        ///   Looks up a localized string similar to Test 6\nStäller befintligt AlarmClock-objekt till 6:12.\nAlarmtiderna till 6:13 och 6:15 och låter den gå 6 minuter.\n.
         /// </summary>
         internal static string Test6 {
             get {
@@ -115,7 +136,7 @@ namespace _1DV402.S2.L2C.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test 7 \n\n.
+        ///   Looks up a localized string similar to Test 7 \nTestar egenskaperna så att undantag kastas\ndå tid och alarmtid tilldelas felaktiga värden.\n.
         /// </summary>
         internal static string Test7 {
             get {
@@ -124,11 +145,20 @@ namespace _1DV402.S2.L2C.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test 8 \n\n.
+        ///   Looks up a localized string similar to Test 8 \nTestar konstruktorer så att undantag kastas\ndå tid och alarmtid tilldelas felaktiga värden.\n.
         /// </summary>
         internal static string Test8 {
             get {
                 return ResourceManager.GetString("Test8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} testet genomfördes inte pga av att något gick fel. Ett undantag kastades..
+        /// </summary>
+        internal static string ViewErrTest {
+            get {
+                return ResourceManager.GetString("ViewErrTest", resourceCulture);
             }
         }
     }

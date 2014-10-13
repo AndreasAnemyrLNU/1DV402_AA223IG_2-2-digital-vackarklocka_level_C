@@ -16,7 +16,7 @@ namespace _1DV402.S2.L2C
             get { return _maxNumber; }
             set 
             { 
-                //Validerar ett inkommannde value större än 0
+                //Validate incoming value to true if it's greater than 0
                 if(!(0 < value))
                 {
                     throw new ArgumentException();
@@ -30,7 +30,7 @@ namespace _1DV402.S2.L2C
             get { return _number; }
             set 
             {
-            //Validera value till ett slutet intervalla melan 0 och MaxNumber
+            //VAlidate incoming value to a closed interval between 0 and MaxNumber
                 if(value < 0 || value > MaxNumber)
                 {
                     throw new ArgumentException();
@@ -38,7 +38,7 @@ namespace _1DV402.S2.L2C
             _number = value; 
             }
         }
-
+        //Constructors
         public NumberDisplay(int maxNumber)
             :this(maxNumber, 0) { }
         public NumberDisplay(int maxNumber, int number)
@@ -69,17 +69,26 @@ namespace _1DV402.S2.L2C
             }
             else
             {
+                //Sets to 0 if Number has come to MaxNumber
                 Number = 0;
             }
         }
 
         public static bool operator !=(NumberDisplay a, NumberDisplay b)
         {
-            return a.Equals(b);
+            return !(a == b);
         }
 
         public static bool operator ==(NumberDisplay a, NumberDisplay b)
         {
+            //Check if a is null
+            //(operator== would be recursive)
+            if (ReferenceEquals(a, null))
+            {
+                //Return true if b is also full
+                //but false otherwise
+                return ReferenceEquals(b, null);
+            }
             return a.Equals(b);
         }
 
@@ -90,7 +99,7 @@ namespace _1DV402.S2.L2C
 
         public string ToString(string format)
         {
-            //Lägg till inledande 0:a i sträng om Number är mindre än 10 och om formatsträngen är lika med "00
+            //Add Zero in beginning if Number has a value less than 10 and if format is equal to "00"
             if ("00" == format)
             {
                 if (Number < 10)
@@ -103,7 +112,7 @@ namespace _1DV402.S2.L2C
                 }
 
             }
-            //Åsidossätt inledande nolla om formatsträng är "0" eller "G"
+            //If format is set to "0" or "G"
             else if (("0" == format) || ("G" == format))
             {
                 return Number.ToString();

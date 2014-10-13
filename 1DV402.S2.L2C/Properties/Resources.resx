@@ -117,6 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Display" xml:space="preserve">
+    <value>╔══════════════════════════════════════╗
+║       Väckarklockan URLED (TM)       ║
+║       Modellnr.: 1DV402S2L2C         ║
+╚══════════════════════════════════════╝</value>
+    <comment> </comment>
+  </data>
+  <data name="NotValidStringHHmm" xml:space="preserve">
+    <value>Strängen {0} kan inte tolkas som en tid på formatet HH:mm.</value>
+  </data>
   <data name="Test1" xml:space="preserve">
     <value>Test 1 \nTest av standardkonstruktorn\n</value>
   </data>
@@ -124,21 +134,24 @@
     <value>Test 2 \nTest av konstruktorn med två parametrar (9, 42)\n</value>
   </data>
   <data name="Test3" xml:space="preserve">
-    <value>Test 3\n\n</value>
+    <value>Test 3\nTest av konstruktorn med fyra parametrar av typen int (13, 24, 7, 35)"\n</value>
   </data>
   <data name="Test4" xml:space="preserve">
-    <value>Test 4\n\n</value>
+    <value>Test 4\nTest av konstruktorn med minst två parametrar av typen string.\n("7:07","7:10","7:15","7:30")\n</value>
   </data>
   <data name="Test5" xml:space="preserve">
-    <value>Test 5\n\n</value>
+    <value>Test 5\nStäller befintligt AlarmClock-objekt till 23:58 och låter den gå 13 minuter.\n</value>
   </data>
   <data name="Test6" xml:space="preserve">
-    <value>Test 6 \n\n</value>
+    <value>Test 6\nStäller befintligt AlarmClock-objekt till 6:12.\nAlarmtiderna till 6:13 och 6:15 och låter den gå 6 minuter.\n</value>
   </data>
   <data name="Test7" xml:space="preserve">
-    <value>Test 7 \n\n</value>
+    <value>Test 7 \nTestar egenskaperna så att undantag kastas\ndå tid och alarmtid tilldelas felaktiga värden.\n</value>
   </data>
   <data name="Test8" xml:space="preserve">
-    <value>Test 8 \n\n</value>
+    <value>Test 8 \nTestar konstruktorer så att undantag kastas\ndå tid och alarmtid tilldelas felaktiga värden.\n</value>
+  </data>
+  <data name="ViewErrTest" xml:space="preserve">
+    <value>{0} testet genomfördes inte pga av att något gick fel. Ett undantag kastades.</value>
   </data>
 </root>

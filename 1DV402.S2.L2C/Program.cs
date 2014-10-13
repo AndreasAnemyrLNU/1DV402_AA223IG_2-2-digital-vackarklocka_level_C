@@ -13,13 +13,20 @@ namespace _1DV402.S2.L2C
         static void Main(string[] args)
         {    
             //Argumens tells wich of the tests to run. You can ignore by skip some arguments(nr:s)
+            ViewDisplay();
+            Console.WriteLine();
+            Console.WriteLine();
+
             TestPackage(1,2,3,4,5,6,7,8);
+
             Console.ReadKey();
         }
         //Create an Alarmobject named ac. You can also give a number of
         //how many minutes time will fly. Of course 0 is accepted also...
         private static void Run(AlarmClock ac, int minutes = 0)
         {
+
+
             if (0 == minutes)
             {
                 Console.WriteLine(ac.ToString());
@@ -62,17 +69,14 @@ namespace _1DV402.S2.L2C
         {
             HorizontalLine();
             HorizontalLine();
-            Console.WriteLine("Test 3.");
-            Console.WriteLine("Test av konstruktorn med fyra parametrar av typen int (13, 24, 7, 35)");
-            Console.WriteLine();
+            Console.WriteLine(Properties.Resources.Test3.Replace("\\n", Environment.NewLine));
             Run(new AlarmClock(13, 24, 7, 35));
         }
         private static void Test4()
         {
             HorizontalLine();
             HorizontalLine();
-            Console.WriteLine("Test 4.");
-            Console.WriteLine("Test av konstruktorn med minst två parametrar av typen string, (\"7:07\",\"7:10\",\"7:15\",\"7:30\")");
+            Console.WriteLine(Properties.Resources.Test4.Replace("\\n", Environment.NewLine));
             Console.WriteLine();
             Run(new AlarmClock("7:07","7:10","7:15","7:30"));
         }
@@ -80,36 +84,28 @@ namespace _1DV402.S2.L2C
         {
             HorizontalLine();
             HorizontalLine();
-            Console.WriteLine("Test 5.");
-            Console.WriteLine("Ställer befintligt AlarmClock-objekt till 23:58 och låter den gå 13 minuter.");
-            Console.WriteLine();
+            Console.WriteLine(Properties.Resources.Test5.Replace("\\n", Environment.NewLine));
             Run(new AlarmClock("23:58","7:10","7:15","7:30"),13);
         }
         private static void Test6()
         {
             HorizontalLine();
             HorizontalLine();
-            Console.WriteLine("Test 6.");
-            Console.WriteLine("Ställer befintligt AlarmClock-objekt till 6:12 och alarmtiden till 6:15 och låter den gå 6 minuter.");
-            Console.WriteLine();
+            Console.WriteLine(Properties.Resources.Test6.Replace("\\n", Environment.NewLine));
             Run(new AlarmClock("6:12","6:13","6:15"), 6);
         }
         private static void Test7()
         {
             HorizontalLine();
             HorizontalLine();
-            Console.WriteLine("Test 7.");
-            Console.WriteLine("Testar egenskaperna så att undantag kastas då tid och alarmtid tilldelas felaktiga värden.");
-            Console.WriteLine();
+            Console.WriteLine(Properties.Resources.Test7.Replace("\\n", Environment.NewLine));
             Run(new AlarmClock("24:89","7:69"));
         }
         private static void Test8()
         {
             HorizontalLine();
             HorizontalLine();
-            Console.WriteLine("Test 8.");
-            Console.WriteLine("Testar konstruktorer så att undantag kastas då tid och alarmtid tilldelas felaktiga värden.");
-            Console.WriteLine();
+            Console.WriteLine(Properties.Resources.Test8.Replace("\\n", Environment.NewLine));
             Run(new AlarmClock(32,03,27,00));
         }
         private static void TestPackage(params int[] runTest)
@@ -124,7 +120,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("Första testet genomfördes inte!");
+                Console.WriteLine(string.Format(Properties.Resources.ViewErrTest,"Första"));
             }
             try
             {
@@ -135,7 +131,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("Andra testet genomfördes inte!");
+                Console.WriteLine(string.Format(Properties.Resources.ViewErrTest, "Andra"));
             }
             try
             {
@@ -146,7 +142,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("tredje testet genomfördes inte!");
+                Console.WriteLine(string.Format(Properties.Resources.ViewErrTest, "Tredja"));
             }
             try
             {
@@ -157,7 +153,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("Fjärde testet genomfördes inte!");
+                Console.WriteLine(string.Format(Properties.Resources.ViewErrTest, "Fjärde"));
             }
             try
             {
@@ -168,7 +164,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("Femte testet genomfördes inte!");
+                Console.WriteLine(string.Format(Properties.Resources.ViewErrTest, "Femte"));
             }
             try
             {
@@ -179,7 +175,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("Sjätte testet genomfördes inte!");
+                Console.WriteLine(string.Format(Properties.Resources.ViewErrTest, "Sjätte"));
             }
             try
             {
@@ -191,7 +187,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("Sjunde testet genomfördes inte!");
+                Console.WriteLine(string.Format(Properties.Resources.ViewErrTest, "Sjunde"));
             }
             try
             {
@@ -203,7 +199,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-               Console.WriteLine("Åttonde testet genomfördes inte!");
+                Console.WriteLine(string.Format(Properties.Resources.ViewErrTest, "Åttonde"));
             }
         }
         private static void HorizontalLine() 
@@ -216,6 +212,14 @@ namespace _1DV402.S2.L2C
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(ErrorMessage);
             ErrorMessage = null;
+            Console.ResetColor();
+        }
+
+
+        private static void ViewDisplay()
+        {
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.Write(Properties.Resources.Display);
             Console.ResetColor();
         }
 
