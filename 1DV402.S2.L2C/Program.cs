@@ -11,11 +11,13 @@ namespace _1DV402.S2.L2C
 
         public static string ErrorMessage { get; set; }
         static void Main(string[] args)
-        {       
-           TestPackage(1,2,3,4,5,6,7,8);
+        {    
+            //Argumens tells wich of the tests to run. You can ignore by skip some arguments(nr:s)
+            TestPackage(1,2,3,4,5,6,7,8);
             Console.ReadKey();
-
         }
+        //Create an Alarmobject named ac. You can also give a number of
+        //how many minutes time will fly. Of course 0 is accepted also...
         private static void Run(AlarmClock ac, int minutes = 0)
         {
             if (0 == minutes)
@@ -26,6 +28,7 @@ namespace _1DV402.S2.L2C
             {
                 for (int i = 0; i < minutes; i++)
                 {
+                    //Console outputting is colored DarkMagent when time and alarmtime is equality
                     if (ac.TickTock())
                     {
                         Console.BackgroundColor = ConsoleColor.DarkMagenta;
@@ -34,6 +37,7 @@ namespace _1DV402.S2.L2C
                     }
                     else
                     {
+                        //Outpus when time has no alarm
                         Console.WriteLine(ac.ToString());
                     }
                 }
@@ -44,18 +48,14 @@ namespace _1DV402.S2.L2C
         private static void Test1(){
             HorizontalLine();
             HorizontalLine();
-            Console.WriteLine("Test 1.");
-            Console.WriteLine("Test av standardkonstruktorn");
-            Console.WriteLine();
+            Console.WriteLine(Properties.Resources.Test1.Replace("\\n", Environment.NewLine));
             Run(new AlarmClock()); 
        }
         private static void Test2()
         {
             HorizontalLine();
             HorizontalLine();
-            Console.WriteLine("Test 2.");
-            Console.WriteLine("Test av konstruktorn med två parametrar (9, 42)");
-            Console.WriteLine();
+            Console.WriteLine(Properties.Resources.Test2.Replace("\\n", Environment.NewLine));
             Run(new AlarmClock(9,42));
         }
         private static void Test3()

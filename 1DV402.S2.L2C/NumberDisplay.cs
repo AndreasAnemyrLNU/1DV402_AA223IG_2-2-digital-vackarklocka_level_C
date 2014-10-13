@@ -49,12 +49,16 @@ namespace _1DV402.S2.L2C
 
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            if (obj == null)
+            {
+                throw new ArgumentNullException();
+            }
+            return this.ToString() == obj.ToString();
         }
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return ToString().GetHashCode();
         }
 
         public void Increment()
@@ -67,6 +71,16 @@ namespace _1DV402.S2.L2C
             {
                 Number = 0;
             }
+        }
+
+        public static bool operator !=(NumberDisplay a, NumberDisplay b)
+        {
+            return a.Equals(b);
+        }
+
+        public static bool operator ==(NumberDisplay a, NumberDisplay b)
+        {
+            return a.Equals(b);
         }
 
         public override string ToString()

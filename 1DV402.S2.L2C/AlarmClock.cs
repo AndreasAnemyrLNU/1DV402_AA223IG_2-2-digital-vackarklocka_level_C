@@ -8,13 +8,14 @@ namespace _1DV402.S2.L2C
 {
     class AlarmClock
     {
-        //Aggregat alarmtiderna
+        //Aggregate to Clockdisplay (array)
         private ClockDisplay[] _alarmTimes;
-        //Aggregat Tiden
+        //Aggregate to Clockdisplay - current time
         private ClockDisplay _time;
-
+        //Public property AlarmTimes Encapsulating _alarmTimes - type Clockdisplay 
         public string[] AlarmTimes 
         {
+            //returns complete list of alarmtimes
             get
             {
                 string[] alarmTimesArray = new string[_alarmTimes.Length];
@@ -25,11 +26,12 @@ namespace _1DV402.S2.L2C
                 }
                 return alarmTimesArray;
             }
+            //Converts string to an object of type Clockdisplay
             set
             {
-                    //Kopierar inkommande array values värde till array alarmTimes för förbättrad läsbarhet
+                    //Copy incoming value[] to alarmtimes for enhanced readability
                     string[] alarmTimes = value;
-                    //Loopar genom arry och skapar ClockDisplay objekt för varje sträng
+                    //Loops through array and creates objects of type Clockdisplay 
                     for(int i = 0; i < alarmTimes.Length;i++)
                     {
                         _alarmTimes[i] = new ClockDisplay();
@@ -37,7 +39,7 @@ namespace _1DV402.S2.L2C
                     }
             }
         }
-       
+        //Property Time encapsulates _time. _time holds current time
         public string Time 
         {
             get
@@ -49,10 +51,9 @@ namespace _1DV402.S2.L2C
                 _time.Time = value;
             }
         }
-
+        //Four Constructors + One another type of Constructor - accepting strings as argument/s
         public AlarmClock() 
-            :this(0, 0)  {}
-         
+            :this(0, 0)  {}        
         public AlarmClock(int hour, int minute)
             :this(hour, minute, 0, 0)   {}
 
@@ -66,6 +67,7 @@ namespace _1DV402.S2.L2C
             }
             catch (FormatException e)
             {
+                //Collecting ErrorMessage if value not accepted by regx
                 Program.ErrorMessage += string.Format("{0}\n", e.Message);
                 _time = null;
             }
@@ -77,6 +79,7 @@ namespace _1DV402.S2.L2C
             }
             catch (FormatException e)
             {
+                //Collecting ErrorMessage if value not accepted by regx
                 Program.ErrorMessage += string.Format("{0}\n", e.Message);
                 _alarmTimes = null;
             }
@@ -91,11 +94,13 @@ namespace _1DV402.S2.L2C
             }
             catch (FormatException e)
             {
+                //Collecting ErrorMessage if value not accepted by regx
                 Program.ErrorMessage += string.Format("{0}\n", e.Message);
                 _time = null;
             }
           
-                //Skapar rätt antal ClockDisplayobjekt
+                //Create one or more objects of type Clockdisplay. 
+                //Nr of ojects to create are made up on alarmTimes.Length
             try
             {
                 _alarmTimes = new ClockDisplay[alarmTimes.Length];
@@ -103,6 +108,7 @@ namespace _1DV402.S2.L2C
             }
             catch (FormatException e)
             {
+                //Collecting ErrorMessage if value not accepted by regx
                 Program.ErrorMessage += string.Format("{0}\n", e.Message);
                 _alarmTimes = null;
             }
@@ -110,63 +116,66 @@ namespace _1DV402.S2.L2C
             
         }
 
-        //Nu ger jag mig på en att förstå Equals :)
+        //Checks value equality of two different objs
         public override bool Equals(object obj)
         {
             if(obj == null)
             {
-                return false;
+                throw new ArgumentNullException();
             }
-
-            if(!(obj is string))
-            {
-                return false;
-            }
-
-            if (obj.ToString() == _time.ToString())
-            {
-                return true;
-            }
-            return false;
+            return this.ToString() == obj.ToString();
         }
-
+        //Returns hashcode by method ToString()
         public override int GetHashCode()
-            {
- 	            return base.GetHashCode();
-            }
-
+        {
+            return ToString().GetHashCode();
+        }
+        //Overrides operator != for objs of type AlarmClock
+        public static bool operator != (AlarmClock a, AlarmClock b)
+        {
+            return a.Equals(b);
+        }
+        //Overrides operator == for objs of type AlarmClock
+        public static bool operator == (AlarmClock a, AlarmClock b)
+        {
+            return a.Equals(b);
+        }
+        //Tick one min forward
         public bool TickTock()
         {
             _time.Increment();
 
             int length = AlarmTimes.Length;
 
-            //ij säger vart i stränger jag är
+            //Loops throug all alarmtimes...
             for (int ij = 0; ij < length; ij++)
             {
-                //om nuvarande alarmtid är vad tiden är så!
-                if(Equals(AlarmTimes[ij]))
+                //Test if new minutes has an alarmobject
+                if(this.Time.Equals(AlarmTimes[ij]))
                 {
                     return true;
                 }
             }
             return false;
         }
-
+        //Gives an string to output for every new minute.
+        //To Do!    eplace concatenating with other methods!!!!!
         public override string ToString()
         {
             string str = "";
             if (!(_alarmTimes == null))
             {
-                foreach (ClockDisplay _alarmTime in _alarmTimes)
+                for (int i = 0; i < _alarmTimes.Length; i++ )
                 {
-                    str += _alarmTime.ToString();
+                    str += _alarmTimes[i].ToString();
+                    if (i != _alarmTimes.Length -1)
+                    {
+                        str += " ";
+                    }
                 }
-                return string.Format("{0} ({1})", _time.ToString(), str);
+                return string.Format("{0,7} ({1})", _time.ToString(), str);
             }
             return "";
-
         }
-
     }
 }
