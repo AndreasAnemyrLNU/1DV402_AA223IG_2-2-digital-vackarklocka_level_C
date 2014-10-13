@@ -17,13 +17,13 @@ namespace _1DV402.S2.L2C
         {
             get
             {
-                string[] alarmTimesToStringArr = new string[_alarmTimes.Length];
+                string[] alarmTimesArray = new string[_alarmTimes.Length];
 
                 for (int i = 0; i < _alarmTimes.Length; i++)
                 {
-                    alarmTimesToStringArr[i] = _alarmTimes[i].ToString();
+                    alarmTimesArray[i] = _alarmTimes[i].ToString();
                 }
-                return alarmTimesToStringArr;
+                return alarmTimesArray;
             }
             set
             {
@@ -111,17 +111,24 @@ namespace _1DV402.S2.L2C
         }
 
         //Nu ger jag mig på en att förstå Equals :)
-        public override bool Equals(object obj)
+        public override bool Equals(object alarmtime)
         {
-            if(obj == null)
+            if(alarmtime == null)
             {
                 return false;
             }
 
-            if(!(obj is ClockDisplay))
+            if(!(alarmtime is ClockDisplay))
             {
                 return false;
             }
+
+            if (alarmtime.ToString() == _time.ToString())
+            {
+                Console.WriteLine("Nu är de lika!");
+            }
+
+
 
             return true;
 

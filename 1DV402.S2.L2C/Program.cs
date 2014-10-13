@@ -14,6 +14,7 @@ namespace _1DV402.S2.L2C
         {       
            TestPackage();
             Console.ReadKey();
+
         }
         private static void Run(AlarmClock ac, int minutes = 0)
         {
@@ -26,9 +27,24 @@ namespace _1DV402.S2.L2C
                 for (int i = 0; i < minutes; i++)
                 {
                     ac.TickTock();
-                    Console.WriteLine(ac.ToString());
+                    //Antal existerande larmtider sätt till length
+                    int length = ac.AlarmTimes.Length;
+                    
+                    //ij säger vart i stränger jag är
+                    for (int ij = 0; ij < length; ij++)
+                    {
+                        //om nuvarande alarmtid är vad tiden är så!
+                        if (ac.AlarmTimes[ij].Equals(ac.Time))
+                        {
+                            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                        }
+                    }
+                    Console.WriteLine(string.Format("{0} BEEP! BEEP! BEEP!",ac.ToString()));
+                    Console.ResetColor();
                 }
             }
+
+
         }
         private static void Test1(){
             HorizontalLine();
@@ -81,7 +97,7 @@ namespace _1DV402.S2.L2C
             Console.WriteLine("Test 6.");
             Console.WriteLine("Ställer befintligt AlarmClock-objekt till 6:12 och alarmtiden till 6:15 och låter den gå 6 minuter.");
             Console.WriteLine();
-            Run(new AlarmClock("6:12", "6:15"), 6);
+            Run(new AlarmClock("6:12","6:13","6:15"), 6);
         }
         private static void Test7()
         {
@@ -103,9 +119,10 @@ namespace _1DV402.S2.L2C
         }
         private static void TestPackage()
         {
+
             try 
             {
-            Test1();
+               Test1();
             }
             catch
             {
@@ -137,7 +154,7 @@ namespace _1DV402.S2.L2C
             }
             try
             {
-                Test5();
+               Test5();
             }
             catch
             {
@@ -167,7 +184,7 @@ namespace _1DV402.S2.L2C
             }
             catch
             {
-                Console.WriteLine("Åttonde testet genomfördes inte!");
+               Console.WriteLine("Åttonde testet genomfördes inte!");
             }
         }
         private static void HorizontalLine() 
