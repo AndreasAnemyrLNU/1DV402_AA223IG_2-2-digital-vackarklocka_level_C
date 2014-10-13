@@ -111,27 +111,23 @@ namespace _1DV402.S2.L2C
         }
 
         //Nu ger jag mig på en att förstå Equals :)
-        public override bool Equals(object alarmtime)
+        public override bool Equals(object obj)
         {
-            if(alarmtime == null)
+            if(obj == null)
             {
                 return false;
             }
 
-            if(!(alarmtime is ClockDisplay))
+            if(!(obj is string))
             {
                 return false;
             }
 
-            if (alarmtime.ToString() == _time.ToString())
+            if (obj.ToString() == _time.ToString())
             {
-                Console.WriteLine("Nu är de lika!");
+                return true;
             }
-
-
-
-            return true;
-
+            return false;
         }
 
         public override int GetHashCode()
@@ -143,8 +139,18 @@ namespace _1DV402.S2.L2C
         {
             _time.Increment();
 
-            return true;
+            int length = AlarmTimes.Length;
 
+            //ij säger vart i stränger jag är
+            for (int ij = 0; ij < length; ij++)
+            {
+                //om nuvarande alarmtid är vad tiden är så!
+                if(Equals(AlarmTimes[ij]))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public override string ToString()

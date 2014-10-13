@@ -12,7 +12,7 @@ namespace _1DV402.S2.L2C
         public static string ErrorMessage { get; set; }
         static void Main(string[] args)
         {       
-           TestPackage();
+           TestPackage(1,2,3,4,5,6,7,8);
             Console.ReadKey();
 
         }
@@ -26,21 +26,16 @@ namespace _1DV402.S2.L2C
             {
                 for (int i = 0; i < minutes; i++)
                 {
-                    ac.TickTock();
-                    //Antal existerande larmtider sätt till length
-                    int length = ac.AlarmTimes.Length;
-                    
-                    //ij säger vart i stränger jag är
-                    for (int ij = 0; ij < length; ij++)
+                    if (ac.TickTock())
                     {
-                        //om nuvarande alarmtid är vad tiden är så!
-                        if (ac.AlarmTimes[ij].Equals(ac.Time))
-                        {
-                            Console.BackgroundColor = ConsoleColor.DarkMagenta;
-                        }
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                        Console.WriteLine(string.Format("{0} BEEP! BEEP! BEEP!", ac.ToString()));
+                        Console.ResetColor();
                     }
-                    Console.WriteLine(string.Format("{0} BEEP! BEEP! BEEP!",ac.ToString()));
-                    Console.ResetColor();
+                    else
+                    {
+                        Console.WriteLine(ac.ToString());
+                    }
                 }
             }
 
@@ -117,12 +112,15 @@ namespace _1DV402.S2.L2C
             Console.WriteLine();
             Run(new AlarmClock(32,03,27,00));
         }
-        private static void TestPackage()
+        private static void TestPackage(params int[] runTest)
         {
 
             try 
             {
-               Test1();
+                if(runTest.Contains(1))
+                {
+                Test1();
+                }
             }
             catch
             {
@@ -130,7 +128,10 @@ namespace _1DV402.S2.L2C
             }
             try
             {
-                Test2();
+                if (runTest.Contains(2))
+                {
+                    Test2();
+                }
             }
             catch
             {
@@ -138,7 +139,10 @@ namespace _1DV402.S2.L2C
             }
             try
             {
-                Test3();
+                if (runTest.Contains(3))
+                {
+                    Test3();
+                }
             }
             catch
             {
@@ -146,7 +150,10 @@ namespace _1DV402.S2.L2C
             }
             try
             {
-                Test4();
+                if (runTest.Contains(4))
+                {
+                    Test4();
+                }
             }
             catch
             {
@@ -154,7 +161,10 @@ namespace _1DV402.S2.L2C
             }
             try
             {
-               Test5();
+                if (runTest.Contains(5))
+                {
+                    Test5();
+                }
             }
             catch
             {
@@ -162,7 +172,10 @@ namespace _1DV402.S2.L2C
             }
             try
             {
-                Test6();
+                if (runTest.Contains(6))
+                {
+                    Test6();
+                }
             }
             catch
             {
@@ -170,8 +183,11 @@ namespace _1DV402.S2.L2C
             }
             try
             {
-                Test7();
-                ViewErrorMessage();
+                if (runTest.Contains(7))
+                {
+                    Test7();
+                    ViewErrorMessage();
+                }
             }
             catch
             {
@@ -179,8 +195,11 @@ namespace _1DV402.S2.L2C
             }
             try
             {
-                Test8();
-                ViewErrorMessage();
+                if (runTest.Contains(8))
+                {
+                    Test8();
+                    ViewErrorMessage();
+                }
             }
             catch
             {
